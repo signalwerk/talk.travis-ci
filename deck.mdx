@@ -208,10 +208,36 @@ deploy:
 ```
 ---
 # Test erstellen
-
 ```js
-"test": "echo \"Error: no test specified\" && exit 1",
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1"
+},
 ```
 
+---
+# Test erstellen
+
+```js
+"scripts": {
+  "test": "sh test.sh",
+},
+```
+
+---
+# Test-Script
+
+```sh
+#!/bin/sh
+
+ if grep "fuck" deck.mdx
+ then
+     # code if found
+      exit 1
+ else
+     # code if not found
+      exit 0
+ fi
+
+```
 
 ---
