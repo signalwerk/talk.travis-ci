@@ -184,3 +184,34 @@ deploy:
 ```
 
 [mögliche Deployments](https://docs.travis-ci.com/user/deployment/pages/)
+[GitHub token](https://github.com/settings/tokens)
+
+
+---
+# Konfiguration
+
+```yaml
+
+language: node_js
+node_js: stable
+install:
+  - npm ci
+script:
+  - npm run build
+deploy:
+  provider: pages
+  local-dir: ./dist
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  on:
+    branch: master
+```
+---
+# Test erstellen
+
+```js
+"test": "echo \"Error: no test specified\" && exit 1",
+```
+
+
+---
