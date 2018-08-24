@@ -1,0 +1,186 @@
+import { Head } from 'mdx-deck'
+import Start from './src/Components/start'
+export theme from './src/theme'
+
+
+
+<Head>
+  <title>Web‑Worknights</title>
+</Head>
+
+
+
+export default Start
+
+#  &nbsp;
+
+![](./img/header.png)
+
+---
+
+### Meetup
+#  Web‑Worknights
+---
+## Warum Web‑Worknights?
+* Möglichkeit zum Austausch für Unerfahrene bis Profis
+* IAD Lehrgang
+---
+
+## Stefan Huber
+* Web-Bastler seit ~ 19 Jahr
+* Web-Entwickler seit ~ 13 Jahr
+
+---
+## THX
+Schule für Gestaltung Zürich
+---
+## DANGER!
+There will be live-coding...
+---
+## Techniken
+* GitHub
+* NodeJS
+* mdx-deck
+---
+## Travis CI
+---
+
+## Was kostet es?
+
+* Gratis für OpenSource
+* [$69 pro Monat für closed Source](https://travis-ci.com/plans)
+
+---
+## Fokus
+
+* Web-Projekte
+* NodeJS-Projekte
+
+---
+## CI?
+---
+## Continuous Integration
+---
+## Continuous Integration
+* Zwischen Entwicklung und Auslieferung wenig Reibung
+* Schnelle Release-Zyklen
+
+---
+## Was macht nun Travis CI?
+
+* Ich sage, was Travis macht!
+* Einfache Konfiguration
+* Ausgelöst durch GitHub (webhook)
+* Läuft als Software as a Service (SaaS)
+
+---
+## Typische Tasks
+
+* Testing
+* Deployment
+* ...
+
+---
+
+# Testing
+* Überprüft ob neuer Code läuft
+* Travis führt Tests aus – Entwickler muss Tests schreiben.
+
+---
+
+# Deployment
+* Auslieferung von Software an Server
+* Meist nach bestandenem Test
+
+---
+
+# Deployment?!
+
+* Docker? Eher [Docker Cloud](https://cloud.docker.com/swarm/signalwerk)
+
+---
+
+# Unterschied?
+
+* Docker Cloud macht Container (ähnlich einem Computer)
+* Travis kann Container machen – muss aber nicht
+
+---
+# Demo
+---
+# Konfiguration
+
+* `travis.yml` im Hauptverzeichnis genügt
+
+---
+# Konfiguration
+
+```yaml
+
+language: node_js
+node_js: stable
+install:
+  - npm ci
+script:
+  - npm run build
+deploy:
+  provider: pages
+  local-dir: ./dist
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  on:
+    branch: master
+```
+
+---
+# Umgebung aufbauen
+
+```yaml
+
+language: node_js
+node_js: stable
+```
+[mögliche Sprachen](https://docs.travis-ci.com/user/languages/javascript-with-nodejs/)
+
+
+---
+# Packages Installieren
+
+```yaml
+install:
+  - npm ci
+```
+
+oder auch
+
+```yaml
+install:
+  - npm install
+```
+
+---
+# Arbeit machen
+
+
+```yaml
+
+script:
+  - npm run build
+```
+---
+# Deploy
+
+
+
+```yaml
+
+deploy:
+  provider: pages
+  local-dir: ./dist
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  on:
+    branch: master
+```
+
+[mögliche Deployments](https://docs.travis-ci.com/user/deployment/pages/)
