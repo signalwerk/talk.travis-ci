@@ -247,7 +247,26 @@ deploy:
  fi
 
 ```
+---
+# Konfiguration
 
+```yaml
+
+language: node_js
+node_js: stable
+install:
+  - npm ci
+  - npm test
+script:
+  - npm run build
+deploy:
+  provider: pages
+  local-dir: ./dist
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  on:
+    branch: master
+```
 ---
 # Merci
 ---

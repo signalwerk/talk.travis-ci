@@ -4,6 +4,7 @@ install:
   - npm ci
 script:
   - npm run build
+  - npm test
 deploy:
   provider: pages
   local-dir: ./dist
